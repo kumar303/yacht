@@ -8,7 +8,7 @@
     "128": "/img/icon-128.png"
   },
   "installs_allowed_from": [
-    "https://marketplace.mozilla.org/",
-    "https://marketplace-dev.allizom.org/"
+    "https://marketplace.mozilla.org",
+    "https://marketplace-dev.allizom.org"
   ]
 }
