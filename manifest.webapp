@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "name": "Yacht",
+  "description": "Herein lies your very own private yacht. Set sail!",
+  "icons": {
+    "16": "/img/icon-16.png",
+    "48": "/img/icon-48.png",
+    "128": "/img/icon-128.png"
+  },
+  "installs_allowed_from": [
+    "https://marketplace.mozilla.org/",
+    "https://marketplace-dev.allizom.org/"
+  ]
+}
