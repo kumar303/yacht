@@ -28,6 +28,20 @@ Otherwise, an attacker can run your app in an apps-enabled browser
 using the console to gain access to the app. This would be harder to do
 on Android, a B2G phone, or similar open web device.
 
+# Dev
+
+To get started, make sure you have the latest volo:
+
+`npm install -g volo`
+
+Build the app like:
+
+`volo build`
+
+Deploy it to github pages like:
+
+`volo ghdeploy`
+
 
 # Mortar
 
