@@ -9,6 +9,7 @@
   },
   "launch_path": "/yacht/",
   "installs_allowed_from": [
+    "https://marketplace.firefox.com",
     "https://marketplace.mozilla.org",
     "https://marketplace-dev.allizom.org",
     "http://localhost:8002"
