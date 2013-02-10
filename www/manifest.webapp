@@ -3,9 +3,7 @@
   "name": "Private Yacht",
   "description": "Herein lies your very own private yacht. Set sail!",
   "icons": {
-    "16": "/img/icon-16.png",
-    "48": "/img/icon-48.png",
-    "128": "/img/icon-128.png"
+    "512": "/img/icon.png"
   },
   "launch_path": "/yacht/",
   "installs_allowed_from": [
