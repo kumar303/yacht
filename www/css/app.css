@@ -251,6 +251,69 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+#app-disabled, #app-disabled *, #app-disabled a:hover,
+#app-disabled a:visited, #app-disabled a:active {
+    bottom: auto;
+    clear: none;
+    cursor: default;
+    font-family: Helvetica,Arial, sans-serif;
+    font-size: medium;
+    font-style: normal;
+    font-weight: normal;
+    height: auto;
+    left: auto;
+    letter-spacing: normal;
+    line-height: 1.4em;
+    max-height: none;
+    max-width:none; min-height: 0;
+    min-width: 0;
+    overflow: visible;
+    right: auto;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+    text-transform: none;
+    top: auto;
+    visibility: visible;
+    white-space: normal;
+    width: auto;
+    z-index: auto;
+}
+#app-disabled a {
+    color: #00f;
+}
+#app-disabled a:visited {
+    color:#a0f;
+}
+#app-disabled a:hover {
+    text-decoration:underline;
+}
+#app-disabled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: #000;
+    opacity: 0.85;
+    width: 100%;
+    height: 100%;
+}
+
+#app-disabled p {
+    z-index: 1000;
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    margin-left: -200px;
+    width: 400px;
+    padding: 0.75em 1em 0.75em 1em;
+    border: 3px solid #ccc;
+    background: #fff;
+    opacity: 1.0;
+    color: #000;
+    border-radius: 1em;
+}
+
 
 /* ==|== media queries ======================================================
    EXAMPLE Media Query for Responsive Design.
