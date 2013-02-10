@@ -30,7 +30,11 @@ on Android, a B2G phone, or similar open web device.
 
 # Dev
 
-To get started, make sure you have the latest volo:
+First, make sure you clone the repo with all submodules:
+
+`git clone --recursive git://github.com/kumar303/yacht.git`
+
+To set up a dev environment, make sure you have the latest volo:
 
 `npm install -g volo`
 

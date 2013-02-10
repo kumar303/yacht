@@ -1,0 +1,3 @@
+[submodule "www/js/receiptverifier"]
+	path = www/js/receiptverifier
+	url = git://github.com/mozilla/receiptverifier.git
