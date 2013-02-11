@@ -3,6 +3,22 @@ var Verifier = require('receiptverifier').receipts.Verifier;
 var app = express();
 var media = __dirname + '/www';
 
+/*
+ * Array of absolute URLs to stores that can issue receipts for your app.
+ *
+ * Example:
+ * installs_allowed_from = ['https://marketplace.firefox.com',
+ *                          'https://marketplace-dev.allizom.org']
+ *
+ * If you don't specify this then the value of the app manifest
+ * will be fetched from the client running your app.
+ * If you rely on the client
+ * then an attacker could hack the client code and issue a fake
+ * receipt at a fake domain with a verifier URL that does nothing.
+ *
+ * */
+var installs_allowed_from;
+
 app.configure(function() {
   app.use(express.logger({format: 'dev'}));
   app.use(express.bodyParser());
@@ -21,17 +37,19 @@ app.get('/yacht/', function (req, res) {
 });
 
 app.post('/yacht/verify', function (req, res) {
-  var store = new Verifier({ onlog: console.log });
+  var store = new Verifier({
+    onlog: console.log,
+    installs_allowed_from: (installs_allowed_from ||
+                            // ... or use the client-fetched manifest value.
+                            req.param('installs_allowed_from').split(','))
+  });
   var receipts = req.param('receipts');
   console.log(receipts);
   if (!receipts) {
     res.send('NO_RECEIPT', 400);
   } else {
     var app = {
-      receipts: receipts.split(','),
-      manifest: {
-        installs_allowed_from: req.param('installs_allowed_from').split(',')
-      }
+      receipts: receipts.split(',')
     };
     store.verifyReceipts(app, function (verifier) {
       if (verifier.state.toString() === '[OK]') {

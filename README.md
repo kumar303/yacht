@@ -35,12 +35,11 @@ an attacker can run your app in an apps-enabled browser
 (such as the nightly build of Firefox) and fiddle with the JavaScript
 using the console to gain access to the app. This would be harder to do
 on Android, a B2G phone, or similar open web device.
-However, an attacker could still fiddle with the JavaScript in this repo
-and probably make the app work even when it uses server side receipt checking
-as implemented for this demo.
-If you introduce a strong server component to your app
-(e.g. check the server periodically and possibly issue tokens)
-you can mitigate this.
+For full protection, you'd want to define `installs_allowed_from`
+in `server.js` which will limit which stores can claim to issue a receipt for your
+app.
+There is an open bug ([770666](https://bugzilla.mozilla.org/show_bug.cgi?id=770666))
+that will make the server whitelist more effective when fixed.
 
 # Dev
 
