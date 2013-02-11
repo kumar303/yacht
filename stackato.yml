@@ -1,0 +1,10 @@
+name: yacht
+instances: 1
+framework:
+  type: node
+mem: 128
+ignores:
+  - .git
+  - art
+  - node_modules
+  - www-ghpages
