@@ -17,16 +17,25 @@ Check out the
 [receipt verifier library](https://github.com/mozilla/receiptverifier)
 for more info on how to use it. This app invokes the library in
 [www/js/app.js](https://github.com/kumar303/yacht/blob/master/www/js/app.js).
+This JavaScript library can be used server side via NodeJS. See below for
+instructions on how to set that up.
 
 # WARNING
 
-In a popular paid app you'd probably want to use a server side receipt checker,
-like
-[this one in Python](http://receipts.readthedocs.org/en/latest/).
-Otherwise, an attacker can run your app in an apps-enabled browser
+In a popular paid app you'd probably want to use a server side receipt checker.
+In the Dev section below you'll find instructions for how to verify the receipts
+in NodeJS from this repository.
+There is also a
+[Python library](http://receipts.readthedocs.org/en/latest/).
+If you aren't using server side receipt checking
+an attacker can run your app in an apps-enabled browser
 (such as the nightly build of Firefox) and fiddle with the JavaScript
 using the console to gain access to the app. This would be harder to do
 on Android, a B2G phone, or similar open web device.
+However, an attacker could still fiddle with the JavaScript in this repo
+and probably make the app work. If you introduce a strong server component
+to your app (e.g. check the server periodically and possibly issue tokens)
+you can mitigate this.
 
 # Dev
 
@@ -34,7 +43,11 @@ First, make sure you clone the repo with all submodules:
 
 `git clone --recursive git://github.com/kumar303/yacht.git`
 
-To set up a dev environment, make sure you have the latest volo:
+## Hosting on Github Pages
+
+If you want to install the app to [github pages](http://pages.github.com/),
+you can deploy it easily using [volo](https://github.com/volojs/volo).
+Install the executable locally:
 
 `npm install -g volo`
 
@@ -45,6 +58,24 @@ Build the app like:
 Deploy it to github pages like:
 
 `volo ghdeploy`
+
+This just automates the process of copying all your static files to the gh-pages
+branch and pushing to github. You could also do that manually without volo.
+
+## Hosting the NodeJS app
+
+You can run the Private Yacht app from NodeJS to boost security with server side
+receipt checks.
+
+Set up your node environment:
+
+`npm install`
+
+Start the dev server like this:
+
+`npm start`
+
+Now you'll see the app running at [http://localhost:3000/](http://localhost:3000/).
 
 
 # Mortar
@@ -82,7 +113,3 @@ h5b crew which provides really helpful templates for server configurations.
 That should help you get set up quickly.
 
 Apache's `.htaccess` file is already included here since that's the most popular.
-
-# The End
-
-This is very much alpha and will be fleshed out over time.
