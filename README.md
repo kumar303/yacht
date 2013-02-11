@@ -4,21 +4,24 @@ This is an [open web app](https://developer.mozilla.org/en/Apps/)
 that provides you with a virtual private yacht.
 Set sail!
 
-The app is hosted right here on
-[github pages](http://kumar303.github.com/yacht/)
-but you must pay
-for it on the
-[Mozilla Marketplace dev site](https://marketplace-dev.allizom.org/app/private-yacht/)
-(no real money is used on the dev site).
-
-This is a demo of how to create a paid app for the Mozilla Marketplace
+This is a demo of how to create a paid app for the Firefox Marketplace
 and how to use the JavaScript receipt checking library to verify the receipt.
 Check out the
 [receipt verifier library](https://github.com/mozilla/receiptverifier)
 for more info on how to use it. This app invokes the library in
 [www/js/app.js](https://github.com/kumar303/yacht/blob/master/www/js/app.js).
-This JavaScript library can be used server side via NodeJS. See below for
+This same JavaScript library can also be used server side via NodeJS. See below for
 instructions on how to set that up.
+
+The app is hosted right here on
+[github pages](http://kumar303.github.com/yacht/)
+(see [manifest.webapp](http://kumar303.github.com/yacht/manifest.webapp))
+but you must pay for it on the
+[Firefox Marketplace dev site](https://marketplace-dev.allizom.org/app/private-yacht/)
+(no real money is used on the dev site).
+In order to actually make a payment on the dev server you have to
+[apply some webpay settings](https://github.com/mozilla/webpay#setting-up-desktop-b2g)
+to your B2G device.
 
 # WARNING
 
@@ -33,8 +36,10 @@ an attacker can run your app in an apps-enabled browser
 using the console to gain access to the app. This would be harder to do
 on Android, a B2G phone, or similar open web device.
 However, an attacker could still fiddle with the JavaScript in this repo
-and probably make the app work. If you introduce a strong server component
-to your app (e.g. check the server periodically and possibly issue tokens)
+and probably make the app work even when it uses server side receipt checking
+as implemented for this demo.
+If you introduce a strong server component to your app
+(e.g. check the server periodically and possibly issue tokens)
 you can mitigate this.
 
 # Dev
@@ -47,7 +52,7 @@ First, make sure you clone the repo with all submodules:
 
 If you want to install the app to [github pages](http://pages.github.com/),
 you can deploy it easily using [volo](https://github.com/volojs/volo).
-Install the executable locally:
+Install the executable:
 
 `npm install -g volo`
 
@@ -75,7 +80,9 @@ Start the dev server like this:
 
 `npm start`
 
-Now you'll see the app running at [http://localhost:3000/](http://localhost:3000/).
+Now you'll see the app running at [http://localhost:3000/](http://localhost:3000/)
+and you can find the manifest at
+[http://localhost:3000/yacht/manifest.webapp](http://localhost:3000/yacht/manifest.webapp).
 
 
 # Mortar
