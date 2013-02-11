@@ -10,27 +10,43 @@ app.configure(function() {
 });
 
 app.get('/', function (req, res) {
+  // Simulate how github pages serves the static files.
+  res.redirect('/yacht/');
+});
+
+app.get('/yacht/', function (req, res) {
+  // Swap out the generic index.html with one that
+  // knows how to talk to the server side verifier.
   res.sendfile(media + '/server-index.html');
 });
 
-app.post('/verify', function (req, res) {
+app.post('/yacht/verify', function (req, res) {
   var store = new Verifier({ onlog: console.log });
-
-  // Log the request body.
-  console.log(req.body);
-  store.verifyReceipts(req.body, function (verifier) {
-    if (verifier.state.toString() === '[OK]') {
-      console.log('Verification success!');
-      res.send('OK', 200);
-    } else {
-      console.log('Verification failure!');
-      res.send('INVALID', 403);
-    }
-  });
+  var receipts = req.param('receipts');
+  console.log(receipts);
+  if (!receipts) {
+    res.send('NO_RECEIPT', 400);
+  } else {
+    var app = {
+      receipts: receipts.split(','),
+      manifest: {
+        installs_allowed_from: req.param('installs_allowed_from').split(',')
+      }
+    };
+    store.verifyReceipts(app, function (verifier) {
+      if (verifier.state.toString() === '[OK]') {
+        console.log('Verification success!');
+        res.send('OK', 200);
+      } else {
+        console.log('Verification failure!');
+        res.send('INVALID', 403);
+      }
+    });
+  }
 });
 
 app.configure(function() {
-  app.use(express.static(media));
+  app.use('/yacht', express.static(media));
 });
 
 var port = process.env['PORT'] || 3000;
