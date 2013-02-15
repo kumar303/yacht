@@ -39,25 +39,25 @@ app.get('/yacht/', function (req, res) {
 app.post('/yacht/verify', function (req, res) {
   var store = new Verifier({
     onlog: console.log,
-    installs_allowed_from: (installs_allowed_from ||
-                            // ... or use the client-fetched manifest value.
-                            req.param('installs_allowed_from').split(','))
+    // If this is set it will override the same value from the
+    // app manifest. Use this to protect against fraud (see above).
+    installs_allowed_from: installs_allowed_from
   });
-  var receipts = req.param('receipts');
-  console.log(receipts);
-  if (!receipts) {
-    res.send('NO_RECEIPT', 400);
-  } else {
-    var app = {
-      receipts: receipts.split(',')
-    };
-    store.verifyReceipts(app, function (verifier) {
+  var receipts;
+  try {
+    receipts = req.body.receipts;
+  } catch (er) {
+    console.log('Error checking receipts: ' + er.toString());
+    res.send('BAD_REQUEST', 400);
+  }
+  if (receipts) {
+    store.verifyReceipts(req.body, function (verifier) {
       if (verifier.state.toString() === '[OK]') {
         console.log('Verification success!');
         res.send('OK', 200);
       } else {
         console.log('Verification failure!');
-        res.send('INVALID', 403);
+        res.send('PAYMENT_REQUIRED', 402);
       }
     });
   }
