@@ -3,14 +3,14 @@
   "name": "Private Yacht",
   "description": "Herein lies your very own private yacht. Set sail!",
   "icons": {
-    "16": "/img/icon-16.png",
-    "48": "/img/icon-48.png",
-    "128": "/img/icon-128.png"
+    "512": "/yacht/img/icon.png",
+    "128": "/yacht/img/icon-128.png"
   },
   "launch_path": "/yacht/",
   "installs_allowed_from": [
     "https://marketplace.firefox.com",
     "https://marketplace.mozilla.org",
+    "https://marketplace.allizom.org",
     "https://marketplace-dev.allizom.org",
     "http://localhost:8002"
   ]
