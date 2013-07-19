@@ -9,7 +9,7 @@
   "dependencies": {
     "receiptverifier": "0.0.5",
     "express": "3.1.0",
-    "volo": "= 0.2.9",
-    "volo-ghdeploy": "= 0.0.5"
+    "volo": ">= 0.2.9",
+    "volo-ghdeploy": ">= 0.0.5"
   }
 }
