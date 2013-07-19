@@ -45,23 +45,28 @@ that will make the server whitelist more effective when fixed.
 
 First, make sure you clone the repo with all submodules:
 
-`git clone --recursive git://github.com/kumar303/yacht.git`
+    git clone --recursive git://github.com/kumar303/yacht.git
 
 ## Hosting on Github Pages
 
 If you want to install the app to [github pages](http://pages.github.com/),
 you can deploy it easily using [volo](https://github.com/volojs/volo).
-Install the executable:
+Install the dependencies:
 
-`npm install -g volo`
+    npm install
 
+Make sure the dependency bin dir is on your path:
+
+    export PATH="./node_modules/.bin/:${PATH}"
+
+Now you should be able to type the `volo` command.
 Build the app like:
 
-`volo build`
+    volo build
 
 Deploy it to github pages like:
 
-`volo ghdeploy`
+    volo ghdeploy
 
 This just automates the process of copying all your static files to the gh-pages
 branch and pushing to github. You could also do that manually without volo.
@@ -73,11 +78,11 @@ receipt checks.
 
 Set up your node environment:
 
-`npm install`
+    npm install
 
 Start the dev server like this:
 
-`npm start`
+    npm start
 
 Now you'll see the app running at [http://localhost:3000/](http://localhost:3000/)
 and you can find the manifest at
