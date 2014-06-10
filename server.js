@@ -1,7 +1,10 @@
 var express = require('express');
+var fs = require('fs');
+
 var Verifier = require('receiptverifier').receipts.Verifier;
 var app = express();
 var media = __dirname + '/www';
+var manifest = JSON.parse(fs.readFileSync(media + '/manifest.webapp'));
 
 /*
  * Array of absolute URLs to stores that can issue receipts for your app.
@@ -17,7 +20,10 @@ var media = __dirname + '/www';
  * receipt at a fake domain with a verifier URL that does nothing.
  *
  * */
-var installs_allowed_from;
+var installs_allowed_from = manifest.installs_allowed_from;
+
+console.log('Setting installs_allowed_from via manifest',
+            installs_allowed_from);
 
 app.configure(function() {
   app.use(express.logger({format: 'dev'}));
