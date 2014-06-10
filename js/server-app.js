@@ -1,6 +1,7 @@
 (function() {
   if (navigator.mozApps) {
     var result = navigator.mozApps.getSelf();
+    console.log('requesting app object');
 
     result.onsuccess = function () {
       if (this.result && this.result.receipts) {
