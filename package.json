@@ -7,8 +7,8 @@
     "npm": "1.1.x"
   },
   "dependencies": {
-    "receiptverifier": "0.0.5",
-    "express": "3.1.0",
+    "receiptverifier": "0.0.6",
+    "express": "4.15.2",
     "volo": ">= 0.2.9",
     "volo-ghdeploy": ">= 0.0.5"
   }
