@@ -1,5 +1,7 @@
 # Private Yacht
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kumar303/yacht.svg)](https://greenkeeper.io/)
+
 This is an [open web app](https://developer.mozilla.org/en/Apps/)
 that provides you with a virtual private yacht.
 Set sail!
